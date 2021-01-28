@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Energy Level view{% endblock %}
+
+
+{% block body %}
+    <h1>View Energy level</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Configuration</th>
+            <th scope="col">Term</th>
+            <th scope="col">J</th>
+            <th scope="col">Level</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for energy_level in energy_levels %}
+            <tr>
+                <td>{{ energy_level.configuration }}</td>
+                <td>{{ energy_level.term }}</td>
+                <td>{{ energy_level.j }}</td>
+                <td>{{ energy_level.level }}</td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

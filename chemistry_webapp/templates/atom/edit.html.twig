@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Atom{% endblock %}
+
+{% block body %}
+    {% for i in url_images %}
+        <tr>
+            <form action="{{ path("image_delete", { "id": i.id_image }) }}">
+                <img src="{{asset(i.url_image) }}" class="img-fluid" width="1000" height="120">
+                <input type="submit" value="Delete">
+            </form>
+        </tr>
+    {% endfor %}
+    <h1>Edit Atom</h1>
+    {{ form(form) }}
+{% endblock %}

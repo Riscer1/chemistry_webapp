@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fik ref list{% endblock %}
+
+{% block body %}
+    <h1>List aki ref</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ref</th>
+            <th scope="col">edit</th>
+            <th scope="col">delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ar in aki_ref %}
+            <tr>
+                <td>
+                    {{ ar.ref }}
+                </td>
+                <td>
+                    <a href="{{ path('aki_ref_edit', {'id': ar.id}) }}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('aki_ref_delete', {'id': ar.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

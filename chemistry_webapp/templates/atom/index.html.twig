@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1> Search atom and ions</h1>
+    {{ form(form) }}
+
+    <h1> Search by symbol</h1>
+    <form action="{{ path("search_atom_by_id") }}">
+        <select name="id_atom">
+            {% for i in atoms %}
+                <option value="{{ i.id }}">{{i.symbol}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" class="btn btn-info" value="Search">
+    </form>
+
+    <h1> Search by name</h1>
+    <form action="{{ path("search_atom_by_id") }}">
+        <select name="id_atom">
+        {% for i in atoms %}
+            <option value="{{i.id}}">{{i.name}}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" class="btn btn-info" value="Search">
+    </form>
+{% endblock %}

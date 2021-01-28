@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jonization level{% endblock %}
+
+{% block body %}
+    <h1>List Ionization Level</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">name</th>
+            <th scope="col">edit</th>
+            <th scope="col">Energy level</th>
+            <th scope="col">Energy level</th>
+            <th scope="col">Oscillator strength</th>
+            <th scope="col">Oscillator strength</th>
+            <th scope="col">delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jl in jonization_levels %}
+            <tr>
+                <td text="editable">{{ jl.name }}</td>
+                <td>
+                    <a href="{{ path('jonization_level_edit', {'id': jl.id}) }}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('energy_level_list', {'id': jl.id }) }}">List</a>
+                </td>
+                <td>
+                    <a href="{{ path('energy_level_add', {'id': jl.id }) }}">Add</a>
+                </td>
+                <td>
+                    <a href="{{ path('oscillator_strength_list', {'id': jl.id}) }}">
+                        List</a>
+                </td>
+                <td>
+                    <a href="{{ path('oscillator_strength_add', {'id': jl.id}) }}">
+                        Add</a>
+                </td>
+                <td>
+                    <a href="{{ path('jonization_level_delete', {'id': jl.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

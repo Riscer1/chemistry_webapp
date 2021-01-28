@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Oscillator srength list{% endblock %}
+
+
+{% block body %}
+    <h1>List Oscillator strength</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Transition</th>
+            <th scope="col">Terms</th>
+            <th scope="col">J-J'</th>
+            <th scope="col">Fik [1]</th>
+            <th scope="col">Aki [1]</th>
+            <th scope="col">Fik [2]</th>
+            <th scope="col">Aki [2]</th>
+            <th scope="col">Fik [3]</th>
+            <th scope="col">Aki [3]</th>
+            <th scope="col">Fik [4]</th>
+            <th scope="col">Aki [4]</th>
+            <th scope="col">Fik [5]</th>
+            <th scope="col">Aki [5]</th>
+            <th scope="col">Fik ref.</th>
+            <th scope="col">Fik ref.</th>
+            <th scope="col">Aki ref.</th>
+            <th scope="col">Aki ref.</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for oscillator_strength in oscillator_strengths %}
+            <tr>
+                <td>{{ oscillator_strength.transition }}</td>
+                <td>{{ oscillator_strength.term }}</td>
+                <td>{{ oscillator_strength.jJ }}</td>
+                <td>{{ oscillator_strength.fik1 }}</td>
+                <td>{{ oscillator_strength.aki1 }}</td>
+                <td>{{ oscillator_strength.fik2 }}</td>
+                <td>{{ oscillator_strength.aki2 }}</td>
+                <td>{{ oscillator_strength.fik3 }}</td>
+                <td>{{ oscillator_strength.aki3 }}</td>
+                <td>{{ oscillator_strength.fik4 }}</td>
+                <td>{{ oscillator_strength.aki4 }}</td>
+                <td>{{ oscillator_strength.fik5 }}</td>
+                <td>{{ oscillator_strength.aki5 }}</td>
+                <td>
+                    <a href="{{ path('fik_ref_list', {'id': oscillator_strength.id}) }}">List</a>
+                </td>
+                <td>
+                    <a href="{{ path('fik_ref_add', {'id': oscillator_strength.id}) }}">Add</a>
+                </td>
+                <td>
+                    <a href="{{ path('aki_ref_list', {'id': oscillator_strength.id}) }}">List</a>
+                </td>
+                <td>
+                    <a href="{{ path('aki_ref_add', {'id': oscillator_strength.id}) }}">Add</a>
+                </td>
+                <td>
+                    <a href="{{ path('oscillator_strength_edit', {'id': oscillator_strength.id}) }}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('oscillator_strength_delete', {'id': oscillator_strength.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

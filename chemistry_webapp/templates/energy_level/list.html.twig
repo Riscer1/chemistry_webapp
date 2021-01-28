@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Energy Level List{% endblock %}
+
+
+{% block body %}
+    <h1>List Energy level</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Configuration</th>
+            <th scope="col">Term</th>
+            <th scope="col">J</th>
+            <th scope="col">Level</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for energy_level in energy_levels %}
+            <tr>
+                <td>{{ energy_level.configuration }}</td>
+                <td>{{ energy_level.term }}</td>
+                <td>{{ energy_level.j }}</td>
+                <td>{{ energy_level.level }}</td>
+                <td><a href="{{ path('energy_level_edit', {'id': energy_level.id}) }}">Edit</a></td>
+                <td><a href="{{ path('energy_level_delete', {'id': energy_level.id}) }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

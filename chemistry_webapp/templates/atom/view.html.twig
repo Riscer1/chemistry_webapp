@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View atom{% endblock %}
+
+{% block body %}
+    <h1>{{ atom.name }}</h1>
+    <table class="table table-sm">
+        <tbody>
+        <tr>
+            <th scope="row">Symbol</th>
+            <td>{{ atom.symbol }}</td>
+        </tr>
+	<tr>
+            <th scope="row">Name</th>
+            <td>{{ atom.name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Atomic number</th>
+            <td>{{ atom.atomicNumber }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Atomic weight</th>
+            <td>{{ atom.atomicWeight }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Atomic radius (pm)</th>
+            <td>{{ atom.atomicRadius }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Ion radius (pm)</th>
+            <td>{{ atom.ionRadius }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Melting temperature (°C)</th>
+            <td>{{ atom.meltingTemperature }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Atom density (g/cm3)</th>
+            <td>{{ atom.density }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Boiling temperature (°C)</th>
+            <td>{{ atom.boilingTemperature }}</td>
+        </tr>
+
+        {% for i in url_images %}
+            <tr>
+                <img src="{{asset(i) }}" class="img-fluid" width="1000" height="120">
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="row">Ionization level</th>
+                <th scope="row">Energy level</th>
+                <th scope="row">Oscillator strength</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jl in jonization_levels %}
+            <tr>
+                <td>{{ jl.name }}</td>
+                <td>
+                    <a href="{{ path('energy_level_view', {'id': jl.id }) }}">View</a>
+                </td>
+                <td>
+                    <a href="{{ path('oscillator_strength_view', {'id': jl.id}) }}">View</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
